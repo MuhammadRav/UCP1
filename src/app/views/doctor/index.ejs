@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctors at Zaa Medical</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Doctors at Zaa Medical</h1>
+
+    <!-- Button to return to Zaa Medical homepage -->
+    <a href="/" class="btn">Back to Zaa Medical</a>
+
+    <h2>Specialists List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Specialty</th>
+          <th>Experience</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% doctors.forEach(doctor => { %>
+        <tr>
+          <td><%= doctor.name %></td>
+          <td><%= doctor.specialty %></td>
+          <td><%= doctor.experience %> years</td>
+          <td>
+            <a href="/doctors/edit/<%= doctor.id %>" class="btn">Edit</a>
+            <form action="/doctors/delete/<%= doctor.id %>" method="POST" style="display:inline;">
+              <button type="submit" class="btn">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+
+    <!-- Button to create a new doctor -->
+    <a href="/doctors/create" class="btn">Add New Doctor</a>
+  </div>
+</body>
+</html>
